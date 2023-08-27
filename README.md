@@ -131,5 +131,5 @@ Access the App: After the deployment, the app will be accessible using your cust
 This will initiate a local development server. The app can be accessed by opening a web browser and entering http://localhost:5000 in the address bar.
 
 Contact
-For any inquiries or assistance regarding the app, please don't hesitate to contact the developer at developer@email.com.
+For any inquiries or assistance regarding the app, please don't hesitate to contact the developer at iaanimashaun@gmail.com
 

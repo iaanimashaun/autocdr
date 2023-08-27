@@ -1,6 +1,6 @@
 # AUTOCDR
 
-### WORK IN PROGRESS
+### WORK IN PROGRESS!!!!!
 
 This comprehensive guide provides detailed insights into the **Retinal Image Analysis App**. Built using Flask, a Python web framework, the app incorporates various libraries and tools to process and analyze retinal images. The app is hosted on a GPU-enabled Docker container orchestrated by Kubernetes for optimized performance.
 

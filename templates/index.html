@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDR Estimator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">CDR Estimator</h1>
+        <form id="imageForm" enctype="multipart/form-data" action="/upload" method="post">
+            <label for="image" class="label">Upload an Image of the Retina</label>
+            <input type="file" id="image" name="image" accept="image/*" required class="input">
+            <button type="submit" class="upload-button">Upload</button>
+        </form>
+        <!-- <div class="default-images">
+            <p>Choose a default image:</p>
+            <div class="default-image" data-src="default-image-1.jpg" onclick="selectDefaultImage(this)">
+                <img src="{{ default_image_urls_1 }}" alt="Default Image 1" width="480" height="480">
+            </div>
+
+
+        </div> -->
+        <input type="hidden" id="selectedDefaultImage" name="selectedDefaultImage">
+        <div id="result" class="result"></div>
+        <div id="message" class="message"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+
+

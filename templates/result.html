@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDR Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .image-heading {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .result-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Result</h1>
+        <div id="result" class="result-section">
+            <div class="result">Cup Disc Ratio: {{ cdr_vertical }}</div>
+        </div>
+        <div class="button-container">
+            <a href="/" class="link-button">Upload Another Image</a>
+        </div>
+    </div>
+    <div class="image-container">
+        <!-- <h2 class="image-heading">Image Result</h2> -->
+        <img src="{{ cdr_contours_image_path }}" alt="Result Image 1" width="512" height="512">
+    </div>
+    
+</body>
+</html>

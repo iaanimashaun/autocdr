@@ -20,7 +20,7 @@ This comprehensive guide provides detailed insights into the **Autocdr App**. Bu
 
 ## Introduction
 
-The **Retinal Image Analysis App** is designed to process retinal images and perform analysis to calculate the Cup-Disc Ratio (CDR) – a crucial measurement in the diagnosis of conditions like glaucoma. The app employs pre-trained machine learning models to predict the regions of interest in retinal images, while providing insightful visualizations of the analysis results.
+The **Autocdr App** is designed to process retinal images and perform analysis to calculate the Cup-Disc Ratio (CDR) – a crucial measurement in the diagnosis of conditions like glaucoma. The app employs pre-trained machine learning models to predict the regions of interest in retinal images, while providing insightful visualizations of the analysis results.
 
 ## Setup
 

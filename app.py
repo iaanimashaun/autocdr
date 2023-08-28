@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Define constant paths
 STATIC_FOLDER: str = 'static'
 RESULT_FOLDER: str = os.path.join(STATIC_FOLDER, 'images', 'results')
-MODEL_FOLDER: str = os.path.join(STATIC_FOLDER, 'models')
+MODEL_FOLDER: str = os.path.join(STATIC_FOLDER, 'models/new/')
 DEFAULT_FOLDER: str = os.path.join(STATIC_FOLDER, 'images', 'default')
 
 # Configure app settings
@@ -21,8 +21,8 @@ app.config['MODEL_FOLDER'] = MODEL_FOLDER
 app.config['DEFAULT_FOLDER'] = DEFAULT_FOLDER
 
 # # AWS configuration
-# AWS_ACCESS_KEY: str = 'AKIA5TT3AHP4H7FEPBHF'
-# AWS_SECRET_KEY: str = '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'
+# AWS_ACCESS_KEY: str = 'XXXXXXXXX'
+# AWS_SECRET_KEY: str = 'XXXXXXXXXX'
 # BUCKET_NAME: str = 'eazyvitals'
 
 

@@ -108,7 +108,7 @@ The image is hosted on Dockerhub and one could skip building the image and direc
 docker run -p 5000:5000 iaanimashaun/autocdr
 ```
 
-Access the App: The app will be accessible in a web browser by navigating to http://localhost:5000.
+3. **Access the App:** The app will be accessible in a web browser by navigating to http://localhost:5000.
 
 
 
@@ -133,7 +133,7 @@ To deploy the app on a Kubernetes cluster, follow these steps:
     ```
 Replace YOUR_DOMAIN.COM with your registered domain.
 
-Access the App: After the deployment, the app will be accessible using your custom domain, such as http://YOUR_DOMAIN.COM.
+4. **Access the App:** After the deployment, the app will be accessible using your custom domain, such as http://YOUR_DOMAIN.COM.
 
 
 ## Contact

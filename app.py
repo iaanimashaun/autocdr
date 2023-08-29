@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Define constant paths
 STATIC_FOLDER: str = 'static'
 RESULT_FOLDER: str = os.path.join(STATIC_FOLDER, 'images', 'results')
-MODEL_FOLDER: str = os.path.join(STATIC_FOLDER, 'models/new/')
+MODEL_FOLDER: str = os.path.join(STATIC_FOLDER, 'models')
 DEFAULT_FOLDER: str = os.path.join(STATIC_FOLDER, 'images', 'default')
 
 # Configure app settings
@@ -91,10 +91,11 @@ def upload() -> str:
             cdr_contours_image_path=cdr_contours_image_path,
         )
     except Exception as e:
+        print("Error occured: ", str(e))
         error_message = "Sorry, could not process image. Please upload a retinal image."
         return render_template(
             'result.html',
-            cdr_vertical=error_message
+            cdr_vertical=e
         )
 
 if __name__ == '__main__':

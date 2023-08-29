@@ -2,7 +2,7 @@
 
 ### WORK IN PROGRESS!!!!!!!!
 
-This comprehensive guide provides detailed insights into the **Autocdr App**. Built using Flask, a Python web framework, the app incorporates various libraries and tools to process and analyze retinal images. The app is hosted on a GPU-enabled Docker container orchestrated by Kubernetes for optimized performance.
+This provides detailed insights into the **Autocdr App**. Built using Flask, a Python web framework, the app incorporates various functions to process and analyze retinal images. The app is hosted on a GPU-enabled Docker container orchestrated by Kubernetes for optimized performance.
 
 ## Table of Contents
 
@@ -10,21 +10,26 @@ This comprehensive guide provides detailed insights into the **Autocdr App**. Bu
 2. [Setup](#setup)
 3. [App Overview](#app-overview)
 4. [Usage](#usage)
-5. [AWS Configuration](#aws-configuration)
-6. [Models](#models)
-7. [Image Processing and Analysis](#image-processing-and-analysis)
-8. [Deployment](#deployment)
-9. [Endpoints](#endpoints)
-10. [Running the App](#running-the-app)
-11. [Contact](#contact)
+5. [Models](#models)
+6. [Deployment](#deployment)
+7. [Endpoints](#endpoints)
+8. [Deployment Instructions](#deployment-instructions)
+    <ol style="margin-left: 20px; list-style-type: upper-roman;">
+        <li><a href="#running-the-app">Running the App</a></li>
+        <li><a href="#running-with-docker">Running with Docker</a></li>
+        <li><a href="#running-on-kubernetes">Running on Kubernetes</a></li>
+    </ol>
+9. [Contact](#contact)
+
+
 
 ## Introduction
 
-The **Autocdr App** is designed to process retinal images and perform analysis to calculate the Cup-Disc Ratio (CDR) – a crucial measurement in the diagnosis of conditions like glaucoma. The app employs pre-trained machine learning models to predict the regions of interest in retinal images, while providing insightful visualizations of the analysis results.
+The **Autocdr App** is designed to process retinal images and perform analysis to estimate the Cup-Disc Ratio (CDR) – a crucial measurement in the diagnosis of glaucoma. The app employs pre-trained deep learning models to segment the optic cup and disc in retinal images, while providing insightful visualizations of the results.
 
 ## Setup
 
-1. **Clone the Repository:** Clone or download the repository containing the app code and related files.
+1. **Clone the Repository:** Clone or download this repository 
 
 2. **Install Dependencies:** Ensure you have Python 3.x installed. Navigate to the app's directory and run the following command to install the required dependencies:
 
@@ -32,11 +37,11 @@ The **Autocdr App** is designed to process retinal images and perform analysis t
     pip install -r requirements.txt
     ```
 
-3. **Configuration:** Open the `app.py` file and configure the AWS access key, secret key, and other settings according to your needs. Additionally, ensure the pre-trained model files are placed in the appropriate folders, as specified in the code.
+3. **Configuration:** Download pretrained models and ensure they are placed in the appropriate folders, as specified in the code.
 
 ## App Overview
 
-The app is built using Flask, a lightweight and efficient web framework. It combines HTML templates, CSS, and Python code to create a user-friendly interface for uploading retinal images and visualizing the CDR analysis results.
+The app is built using Flask, a lightweight and efficient web framework. It combines HTML templates, CSS, and Python code to create a user-friendly interface for uploading retinal images and visualizing the CDR results.
 
 ## Usage
 
@@ -44,23 +49,15 @@ The app is built using Flask, a lightweight and efficient web framework. It comb
 
 2. **Processing and Analysis:** Upon uploading an image, the app undertakes the following steps:
     - Reads the image data and resizes it to 512x512 pixels.
-    - Utilizes pre-trained machine learning models to predict the cup and disc regions within the image.
+    - Utilizes pre-trained deep learning models to predict the cup and disc regions within the image.
     - Calculates the Cup-Disc Ratio (CDR) using the predictions.
-    - Generates visualizations, such as overlay images and CDR contour plots, to facilitate result comprehension.
+    - Generates CDR contour plot to facilitate result comprehension.
 
-3. **Results:** The app displays the computed CDR values alongside visualization components illustrating the analysis results. Users can view overlay images, contour plots, and more.
-
-## AWS Configuration
-
-The app integrates with Amazon Web Services (AWS) S3 to facilitate image upload and retrieval. Users should possess an AWS account and the requisite credentials. AWS-related settings, including the access key, secret key, and bucket name, are configured in the `app.py` file.
+3. **Results:** The app displays the computed CDR values alongside visualization components illustrating the analysis results. Users can view the CDR and contour plots.
 
 ## Models
 
 Pre-trained deep learning models are central to the app's functioning, as they predict the cup and disc regions in retinal images. These models are loaded from specified paths and employed to make accurate predictions.
-
-## Image Processing and Analysis
-
-The core of the app lies in its image processing and analysis steps. Uploaded retinal images are processed using the loaded models to predict cup and disc regions. The Cup-Disc Ratio (CDR) is subsequently calculated based on these predictions. The app generates visualizations to assist in understanding the analysis results.
 
 ## Deployment
 
@@ -73,7 +70,10 @@ The app offers two main endpoints:
 - **`/`**: The home page enables users to upload retinal images for analysis.
 - **`/upload`**: This endpoint processes uploaded images, performs analysis, and displays results.
 
-## Running the App
+
+## Deployment Instructions
+
+### Running the App
 
 To run the app locally, navigate to the app's directory and execute the following command:
 
@@ -82,56 +82,60 @@ python app.py
 ```
 
 
+This will initiate a local development server. The app can be accessed by opening a web browser and entering http://localhost:5000 in the address bar.
 
-# Deployment Instructions
 
-## Running with Docker
 
-The app can also be deployed using Docker for consistent environment management. Follow these steps to run the app using Docker:
+### Running with Docker
+
+Follow these steps to run the app using Docker:
 
 1. **Build the Docker Image:** In the app's directory, run the following command to build the Docker image:
 
-   ```bash
-   docker build -t retinal-image-app .
+```bash
+   docker build -t autocdr .
 ```
 
-Run the Docker Container: Once the image is built, start a Docker container using the following command:
+2. **Run the Docker Container:** Once the image is built, start a Docker container using the following command:
 
 ```bash
-docker run -p 5000:5000 retinal-image-app
-``````
+docker run -p 5000:5000 autocdr
+```
+
+The image is hosted on Dockerhub and one could skip building the image and directly run
+
+```bash
+docker run -p 5000:5000 iaanimashaun/autocdr
+```
+
 Access the App: The app will be accessible in a web browser by navigating to http://localhost:5000.
 
 
 
-## Running on Kubernetes
+### Running on Kubernetes
 To deploy the app on a Kubernetes cluster, follow these steps:
 
-Set Up a Kubernetes Cluster: You have a couple of options for setting up a Kubernetes cluster:
+1. **Set Up a Kubernetes Cluster:** You have a couple of options for setting up a Kubernetes cluster:
 
-Using eksctl: If you prefer an easy way to set up a managed Kubernetes cluster on AWS, you can use eksctl. Install eksctl and run the following command:
+    **a. Using eksctl:** If you prefer an easy way to set up a managed Kubernetes cluster on AWS, you can use eksctl. Install eksctl and run the following command:
 
-bash
-Copy code
-eksctl create cluster --name my-kubernetes-cluster --region us-east-1
-Using kops: Alternatively, if you need more customization, you can use kops to create a Kubernetes cluster on AWS. Install kops and follow the documentation to set up your cluster.
+    ```
+    eksctl create cluster --name <my-kubernetes-cluster> --region <region-name>
+    ```
+    **b. Using kops:** Alternatively, if you need more customization, you can use kops to create a Kubernetes cluster on AWS. Install kops and follow the documentation to set up your cluster.
 
-Domain Registration: Register a domain and configure it to point to your Kubernetes cluster. This is necessary to access the app using a custom domain.
+2. **Domain Registration:** Register a domain and configure it to point to your Kubernetes cluster. This is necessary to access the app using a custom domain. One could use Route 53 or any third party domain registrar.
 
-Deploy Using Kubernetes YAML: Use the provided Kubernetes YAML file to deploy the app:
+3. **Deploy Using Kubernetes YAML:** Use the provided Kubernetes YAML file to deploy the app:
 
-bash
-Copy code
-kubectl apply -f app-deployment.yaml
-Replace YOUR_DOMAIN with your registered domain.
+    ```
+    kubectl apply -f autocdr.yaml
+    ```
+Replace YOUR_DOMAIN.COM with your registered domain.
 
-Access the App: After the deployment, the app will be accessible using your custom domain, such as http://your-domain.com.
-
-
+Access the App: After the deployment, the app will be accessible using your custom domain, such as http://YOUR_DOMAIN.COM.
 
 
-This will initiate a local development server. The app can be accessed by opening a web browser and entering http://localhost:5000 in the address bar.
-
-Contact
+## Contact
 For any inquiries or assistance regarding the app, please don't hesitate to contact the developer at iaanimashaun@gmail.com
 

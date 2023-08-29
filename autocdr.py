@@ -2,10 +2,10 @@
 import os
 import torch
 import numpy as np
-from PIL import Image
 import cv2
 import matplotlib.pyplot as plt
 from torchvision import transforms as T
+from PIL import Image, ImageFilter, ImageOps
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -23,6 +23,7 @@ def predict(model: torch.nn.Module, image_path: str) -> torch.Tensor:
     """
     model.eval()
     img = Image.open(image_path)
+    # img = preprocess_image(image_path)
     transform = T.ToTensor()
     img_tensor = transform(img).to(device)
     with torch.no_grad():
@@ -204,4 +205,14 @@ def plot_overlay_image(image_path, cup_pred_array, disc_pred_array, save_path=""
 
 
 
+def preprocess_image(image_path):
+    # Load the raw retinal image using PIL
+    raw_image = Image.open(image_path).convert("L")  # Convert to grayscale
 
+    # Apply histogram equalization for contrast enhancement
+    equalized_image = ImageOps.equalize(raw_image)
+
+    # Apply Gaussian filtering for noise reduction
+    filtered_image = equalized_image.filter(ImageFilter.GaussianBlur(radius=2))
+
+    return filtered_image

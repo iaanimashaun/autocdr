@@ -27,7 +27,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: example.com
+  - host: YOUR_DOMAIN.COM
     http:
       paths:
         - pathType: Prefix

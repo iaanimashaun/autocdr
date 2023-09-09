@@ -2,7 +2,8 @@
 
 ### WORK IN PROGRESS!!!!!!!!
 
-This provides detailed insights into the **Autocdr App**. Built using Flask, a Python web framework, the app incorporates various functions to process and analyze retinal images. The app is hosted on a GPU-enabled Docker container orchestrated by Kubernetes for optimized performance.
+This provides detailed insights into the **Autocdr App**. Built using Flask, a Python web framework, the app incorporates various functions to process and analyze retinal images. The app is hosted on a GPU-enabled Docker container orchestrated by Kubernetes for optimized performance. [Demo Link]([https://www.example.com/my-demo](http://cdr.dev.eazyvitals.com/))
+
 
 ## Table of Contents
 
